@@ -1,12 +1,13 @@
 import React from "react";
+import bannerImage from "../assets/banner4.png";
+import bannerLottie from "../assets/lottieBg.json";
 
 const Hero = () => {
   return (
     <div
       className="hero min-h-screen"
       style={{
-        backgroundImage:
-          "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+        backgroundImage: `url(${bannerImage})`,
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>

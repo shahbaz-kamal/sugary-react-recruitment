@@ -6,8 +6,7 @@ import "./Navbar";
 import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
-  const hello=useAuth()
-  console.log(hello)
+
   const links = (
     <>
       {navMenu.map((link) => {

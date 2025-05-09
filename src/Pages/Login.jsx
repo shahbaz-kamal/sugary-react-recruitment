@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import Headline from "../Shared/Head;ine";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useAuth from "../Hooks/useAuth";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const { login } = useAuth();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const userName = e.target.userName.value;
+    const password = e.target.password.value;
+   
+    try {
+      login(userName, password);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div className=" flex flex-col items-center justify-center  mt-8 py-6 w-11/12 mx-auto">
@@ -13,14 +28,14 @@ const Login = () => {
       />
 
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
-        <form className="space-y-6">
+        <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email
+              User Name
             </label>
             <input
               type="email"
-              name="email"
+              name="userName"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary outline-none"
               placeholder="you@example.com"
               required

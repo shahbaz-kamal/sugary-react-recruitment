@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
+.font-public {
+  font-family: "Public Sans", sans-serif;
+}

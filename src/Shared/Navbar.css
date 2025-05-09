@@ -1,0 +1,6 @@
+/* In your global CSS or a dedicated CSS file */
+.navbar a:hover {
+  /* Targeting <a> within your navbar */
+  background-color: transparent !important; /* Use !important cautiously */
+  color: rgb(238, 15, 15) !important;
+}

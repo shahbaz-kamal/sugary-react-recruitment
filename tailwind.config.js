@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        text: "rgb(51, 63, 77)", // For main text, body content, paragraphs, headings
-        background: "rgb(230, 241, 247)", // For page background, section backgrounds, cards
-        primary: "rgb(11, 60, 93)", // For navbar, footer, primary buttons (like "Add to cart", "Login"), key elements
-        secondary: "rgb(127, 205, 255)", // For hover states, secondary buttons, badges, tab highlights
-        accent: "rgb(227, 206, 102)", // For highlight areas like discount tags, "New", "Popular", price emphasis
+        text: "rgb(11, 2, 26)", // For main text, body content, paragraphs, headings
+        background: "rgb(244, 236, 253)", // For page background, section backgrounds, cards
+        primary: "rgb(121, 42, 237)", // For navbar, footer, primary buttons (like "Add to cart", "Login"), key elements
+        secondary: "rgb(243, 118, 143)", // For hover states, secondary buttons, badges, tab highlights
+        accent: "rgb(240, 119, 79)", // For highlight areas like discount tags, "New", "Popular", price emphasis
       },
     },
   },

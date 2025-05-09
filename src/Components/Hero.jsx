@@ -23,7 +23,7 @@ const Hero = () => {
           Bring the Ocean to Your Living Room
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <button className="rounded-md border border-secondary px-6 py-2 text-lg bg-secondary hover:bg-secondary hover:bg-opacity-80 hover:border-secondary hover:border-opacity-60 text-text transition duration-300 font-semibold">
+            <button className="rounded-md border border-primary px-6 py-2 text-lg bg-primary hover:bg-secondary hover:bg-opacity-80 hover:border-secondary hover:border-opacity-60 text-text transition duration-300 font-semibold">
               Get Started
             </button>
             <button className="rounded-md border border-primary px-6 py-2 text-lg hover:bg-primary hover:text-white transition duration-300 font-semibold">

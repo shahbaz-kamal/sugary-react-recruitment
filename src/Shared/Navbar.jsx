@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "/logo2.png";
 import { navMenu } from "../Utilities/navMenu";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar";
 
 const Navbar = () => {
@@ -71,9 +71,12 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 ">{links}</ul>
       </div>
       <div className="navbar-end">
-        <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
-          Login
-        </button>
+        <Link to={"/login"}>
+          {" "}
+          <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
+            Login
+          </button>
+        </Link>
       </div>
     </div>
   );

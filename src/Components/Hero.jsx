@@ -1,6 +1,7 @@
 import React from "react";
 import bannerImage from "../assets/banner4.png";
 import sideImage from "../assets/banner1.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -20,12 +21,15 @@ const Hero = () => {
             Dive into Tranquility
           </h1>
           <p className="mb-5 text-2xl md:text-4xl">
-          Bring the Ocean to Your Living Room
+            Bring the Ocean to Your Living Room
           </p>
           <div className="flex gap-4 justify-center md:justify-start">
-            <button className="rounded-md border border-primary px-6 py-2 text-lg bg-primary hover:bg-secondary hover:bg-opacity-80 hover:border-secondary hover:border-opacity-60 text-text transition duration-300 font-semibold">
-              Get Started
-            </button>
+            <Link to={"/login"}>
+              <button className="rounded-md border border-primary px-6 py-2 text-lg bg-primary hover:bg-secondary hover:bg-opacity-80 hover:border-secondary hover:border-opacity-60 text-white transition duration-300 font-semibold">
+                Get Started
+              </button>
+            </Link>
+
             <button className="rounded-md border border-primary px-6 py-2 text-lg hover:bg-primary hover:text-white transition duration-300 font-semibold">
               See More
             </button>

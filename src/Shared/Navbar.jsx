@@ -3,8 +3,11 @@ import logo from "/logo2.png";
 import { navMenu } from "../Utilities/navMenu";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar";
+import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
+  const hello=useAuth()
+  console.log(hello)
   const links = (
     <>
       {navMenu.map((link) => {

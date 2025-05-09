@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className=" flex flex-col items-center justify-center  mt-8 py-6 w-11/12 mx-auto">
       <Headline
@@ -19,6 +20,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              name="email"
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary outline-none"
               placeholder="you@example.com"
               required
@@ -34,12 +36,16 @@ const Login = () => {
                 type={showPassword ? "text" : "password"}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary outline-none"
                 placeholder="Enter your password"
+                name="password"
                 required
               />
-              <div className="absolute top-1/2 -translate-y-1/2 right-4" onClick={()=>{
-                setShowPassword(!showPassword)
-              }}>
-                {showPassword ?  <FaEye></FaEye> :<FaEyeSlash />}
+              <div
+                className="absolute top-1/2 -translate-y-1/2 right-4"
+                onClick={() => {
+                  setShowPassword(!showPassword);
+                }}
+              >
+                {showPassword ? <FaEye></FaEye> : <FaEyeSlash />}
               </div>
             </div>
           </div>
@@ -51,16 +57,6 @@ const Login = () => {
             Login
           </button>
         </form>
-
-        <p className="mt-4 text-sm text-center text-gray-500">
-          Don't have an account?{" "}
-          <a
-            href="/register"
-            className="text-primary font-medium hover:underline"
-          >
-            Register here
-          </a>
-        </p>
       </div>
     </div>
   );

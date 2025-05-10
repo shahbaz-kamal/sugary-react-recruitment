@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import Headline from "../Shared/Headline";
 import useAuth from "../Hooks/useAuth";
+import Loading from "../Components/Loading";
 
 const Overview = () => {
   const axiosSecure = UseAxiosSecure();
@@ -25,12 +26,7 @@ const Overview = () => {
     },
   });
 
-  if (isLoading)
-    return (
-      <div className="w-full min-h-screen flex items-center justify-center">
-        <span className="loading loading-spinner loading-lg "></span>
-      </div>
-    );
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="px-4 md:px-10">

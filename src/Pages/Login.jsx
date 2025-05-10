@@ -23,7 +23,7 @@ const Login = () => {
   };
 
   return (
-    <div className=" flex flex-col items-center justify-center  mt-8 py-6 w-11/12 mx-auto">
+    <div className=" flex flex-col items-center justify-center  mt-16 py-6 w-11/12 mx-auto">
       <Headline
         title="Welcome Back"
         description="Login to your account to explore the world of aquariums"

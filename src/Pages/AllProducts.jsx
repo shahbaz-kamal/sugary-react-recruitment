@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import ProductCard from "../Components/ProductCard";
-
+import Loading from "../Components/Loading";
 
 const AllProducts = () => {
   const axiosSecure = UseAxiosSecure();
@@ -30,7 +30,7 @@ const AllProducts = () => {
   const total = data?.TotalCount || 0;
   const totalPages = Math.ceil(total / limit);
 
-  if (isLoading) return <p>Loading products...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="px-10 py-6">
@@ -65,9 +65,7 @@ const AllProducts = () => {
         </button>
       </div>
 
-      {isFetching && (
-        <p className="text-center mt-2">Loading more products...</p>
-      )}
+      {isFetching && <Loading></Loading>}
     </div>
   );
 };

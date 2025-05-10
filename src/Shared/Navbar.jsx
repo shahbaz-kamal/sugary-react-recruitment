@@ -27,11 +27,11 @@ const Navbar = () => {
               to={link.path}
               className={({ isActive }) =>
                 `transition ease-in-out duration-300 font-semibold text-xl hover:bg-transparent ${
-                  isActive ? "text-primary underline" : "text-text"
+                  isActive ? "text-accent underline" : "text-white"
                 }`
               }
             >
-              <li className=" hover:text-primary hover:underline ">
+              <li className=" hover:text-accent hover:underline ">
                 <span className="px-2"> {link.title}</span>
               </li>
             </NavLink>
@@ -91,8 +91,8 @@ const Navbar = () => {
             <img src={logo} className="rounded-full" alt="" />
           </div>
           <div className="font-extrabold text-xl md:text-3xl hidden md:block">
-            <p className="text-primary font-cinzel">
-              Shop<span className="text-text">Verse</span>
+            <p className="text-accent font-cinzel">
+              Shop<span className="text-white">Verse</span>
             </p>
           </div>
         </div>
@@ -104,13 +104,13 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleLogout}
-            className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold"
+            className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary text-white duration-300 ease-in-out transition font-semibold"
           >
             Logout
           </button>
         ) : (
           <Link to={"/login"}>
-            <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
+            <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary text-white duration-300 ease-in-out transition font-semibold">
               Login
             </button>
           </Link>

@@ -1,15 +1,25 @@
 import React from "react";
 import logo from "/logo2.png";
-import { navMenu } from "../Utilities/navMenu";
-import { Link, NavLink } from "react-router-dom";
+
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
+import navMenu from "../Utilities/navMenu";
 
 const Navbar = () => {
-
+  const { logout, user } = useAuth();
+ 
+ const navItems=navMenu()
+ console.log(navItems)
+  const navigate = useNavigate();
+  if (user) {
+    console.log(user);
+  }
+ 
   const links = (
     <>
-      {navMenu.map((link) => {
+      {navItems.map((link) => {
         if (link.isVisible === true) {
           return (
             <NavLink
@@ -30,6 +40,24 @@ const Navbar = () => {
       })}
     </>
   );
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      Swal.fire({
+        title: "Log Out Successfull",
+        icon: "success",
+        draggable: true,
+      });
+      navigate("/login");
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.message}`,
+      });
+    }
+  };
 
   return (
     <div className="navbar w-11/12  mx-auto">
@@ -73,12 +101,20 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 ">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={"/login"}>
-          {" "}
-          <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
-            Login
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold"
+          >
+            Logout
           </button>
-        </Link>
+        ) : (
+          <Link to={"/login"}>
+            <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
+              Login
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

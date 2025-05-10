@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import Headline from "../Shared/Head;ine";
+import Headline from "../Shared/Headline";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const userName = e.target.userName.value;
     const password = e.target.password.value;
-   
+
     try {
       login(userName, password);
+      navigate("/dashboard/overview");
     } catch (error) {
       console.log(error.message);
     }

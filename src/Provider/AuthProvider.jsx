@@ -1,16 +1,17 @@
 import axios from "axios";
-import React, { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+  const [showSideBar, setShowSideBar] = useState(true);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const login = async (userName, password) => {
-    setLoading(true)
+    setLoading(true);
     const res = await axios.post(
       `https://sugarytestapi.azurewebsites.net/AdminAccount/Login`,
       { UserName: userName, Password: password }
@@ -25,9 +26,9 @@ const AuthProvider = ({ children }) => {
       Swal.fire({
         title: "Login Successful",
         icon: "success",
-        draggable: true
+        draggable: true,
       });
-      setLoading(false)
+      setLoading(false);
     } else {
       Swal.fire({
         icon: "error",
@@ -40,7 +41,30 @@ const AuthProvider = ({ children }) => {
     // console.log(data)
   };
 
-  const authInfo = { login,user,loading };
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    setUser(null);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    setLoading(true);
+    if (token) {
+      // Optionally validate token and fetch user data
+      setUser({ Username: "react@test.com" }); // Dummy fallback
+      setLoading(false);
+    }
+  }, []);
+
+  const authInfo = {
+    login,
+    user,
+    loading,
+    logout,
+    showSideBar,
+    setShowSideBar,
+  };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

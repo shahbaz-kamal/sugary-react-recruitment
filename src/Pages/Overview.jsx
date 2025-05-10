@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import Headline from "../Shared/Headline";
+import useAuth from "../Hooks/useAuth";
 
 const Overview = () => {
   const axiosSecure = UseAxiosSecure();
+  const { user } = useAuth();
+  console.log(user);
 
   const { data, isLoading } = useQuery({
     queryKey: ["productStats"],
@@ -37,7 +40,7 @@ const Overview = () => {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-      <div className="p-6 bg-white rounded-lg shadow-md border-t-4 border-success">
+        <div className="p-6 bg-white rounded-lg shadow-md border-t-4 border-success">
           <h3 className="text-xl font-semibold mb-2">Admin Tools</h3>
           <p className="text-lg">Welcome back! Full access enabled</p>
         </div>
@@ -62,8 +65,6 @@ const Overview = () => {
             {(data?.TotalCount / 2).toFixed(0) || 0}
           </p>
         </div>
-
-      
       </div>
     </div>
   );

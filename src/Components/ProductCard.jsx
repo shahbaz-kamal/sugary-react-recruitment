@@ -1,30 +1,50 @@
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const ProductCard = ({ id, title, brand, price, priceInUsd, imageUrl }) => {
-    return (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            <div className="aspect-square bg-gray-100 overflow-hidden">
-                <LazyLoadImage
-                    src={imageUrl}
-                    alt={title}
-                    effect="blur"
-                    width="100%"
-                    height="100%"
-                    className="object-cover w-full h-full"
-                />
-            </div>
-            <div className="p-4">
-                <h3 className="font-semibold text-lg mb-1 line-clamp-2">{title}</h3>
-                <p className="text-gray-600 text-sm mb-2">{brand}</p>
-                <div className="flex justify-between items-center">
-                    <span className="font-bold text-gray-800">${priceInUsd.toFixed(2)}</span>
-                    <span className="text-gray-500 text-sm">৳{price.toFixed(2)}</span>
-                </div>
-            </div>
-        </div>
-    );
+const ProductCard = ({ product }) => {
+  const {
+    Id,
+    CoverPhoto,
+    Title,
+    VariantTitle,
+    BrandName,
+    SalesPrice,
+    SalesPriceInUsd,
+  } = product;
+
+  const imageUrl = CoverPhoto
+    ? `https://d1wh1xji6f82aw.cloudfront.net/${CoverPhoto}`
+    : 'https://via.placeholder.com/300x200?text=No+Image';
+
+  return (
+    <div
+      key={Id}
+      className="bg-background p-4 rounded-2xl shadow hover:shadow-lg transition duration-300"
+    >
+      <img
+        src={imageUrl}
+        alt={Title}
+        className="h-48 w-full object-cover rounded-xl mb-4"
+      />
+
+      <h3 className="text-lg font-bold text-text">{Title}</h3>
+
+      {VariantTitle && (
+        <p className="text-sm text-text/70 italic mb-1">{VariantTitle}</p>
+      )}
+
+      <p className="text-sm text-text/80 mb-1">
+        <span className="font-medium text-text">Brand:</span>{' '}
+        {BrandName || 'N/A'}
+      </p>
+
+      <p className="text-lg text-accent font-semibold">
+        ৳ {SalesPrice?.toFixed(2)}{' '}
+        <span className="text-sm text-text/60">
+          (${SalesPriceInUsd?.toFixed(2)})
+        </span>
+      </p>
+    </div>
+  );
 };
 
 export default ProductCard;

@@ -16,10 +16,10 @@ const AuthProvider = ({ children }) => {
       const isMobile = window.innerWidth < 768;
       setShowSideBar(!isMobile);
     };
-  
-    handleResize(); // check immediately
-    window.addEventListener("resize", handleResize); // respond to future resizes
-  
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
       { UserName: userName, Password: password }
     );
     console.log(res);
-    // const data = await res.json();
+
     if (res.data.Success) {
       localStorage.setItem("accessToken", res.data.Token);
       localStorage.setItem("refreshToken", res.data.RefreshToken);

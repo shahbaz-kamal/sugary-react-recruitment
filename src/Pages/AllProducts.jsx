@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
-import ProductCard from "./ProductCard";
+import ProductCard from "../Components/ProductCard";
+
 
 const AllProducts = () => {
   const axiosSecure = UseAxiosSecure();
@@ -35,7 +36,7 @@ const AllProducts = () => {
     <div className="px-10 py-6">
       <h2 className="text-2xl font-bold mb-4">All Products</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {data?.Materials?.map((product) => (
           <ProductCard key={product.Id} product={product}></ProductCard>
         ))}

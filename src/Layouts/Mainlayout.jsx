@@ -6,7 +6,7 @@ import Footer from "../Shared/Footer";
 const Mainlayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="fixed w-full bg-white bg-opacity-60 z-50">
+      <header className="fixed w-full bg-white bg-opacity-50 z-50 backdrop-blur-sm">
         <Navbar></Navbar>
       </header>
       <main className="flex-grow">

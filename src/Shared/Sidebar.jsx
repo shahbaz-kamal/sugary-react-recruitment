@@ -7,6 +7,7 @@ import { NavLink } from "react-router-dom";
 import useAxiosSecure from "../Hooks/UseAxiosSecure";
 import useAuth from "../Hooks/useAuth";
 import { AiFillProduct } from "react-icons/ai";
+import { FaHome } from "react-icons/fa";
 
 const Sidebar = () => {
   const { showSideBar, setShowSideBar } = useAuth();
@@ -40,6 +41,21 @@ const Sidebar = () => {
             <AiFillProduct />
           </span>
           {showSideBar ? <span className="px-2"> All Products</span> : ""}
+        </li>
+      </NavLink>
+      <NavLink
+        to={"/"}
+        className={({ isActive }) =>
+          `transition ease-in-out duration-300 font-semibold text-xl hover:bg-transparent ${
+            isActive ? "text-primary " : "text-text"
+          }`
+        }
+      >
+        <li className=" hover:text-primary hover:underline py-2 flex items-center justify-center w-full">
+          <span>
+            <FaHome />
+          </span>
+          {showSideBar ? <span className="px-2"> Home</span> : ""}
         </li>
       </NavLink>
     </>

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "/logo2.png";
+import logo from "../assets/finalLogo.png";
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar";
@@ -87,12 +87,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10">
-            <img src={logo} alt="" />
+          <div className="w-12 h-12">
+            <img src={logo} className="rounded-full" alt="" />
           </div>
           <div className="font-extrabold text-xl md:text-3xl hidden md:block">
             <p className="text-primary font-cinzel">
-              Fish<span className="text-text">Tank</span>
+              Shop<span className="text-text">Verse</span>
             </p>
           </div>
         </div>

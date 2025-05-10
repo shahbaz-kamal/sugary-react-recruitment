@@ -1,9 +1,5 @@
 import useAuth from "../Hooks/useAuth";
 
-
-
-
-
 const navMenu = () => {
   const { user } = useAuth();
   const navMenu = [
@@ -16,7 +12,7 @@ const navMenu = () => {
     {
       id: 2,
       title: "Dashboard",
-      path: "/dashboard",
+      path: "/dashboard/all-products",
       isVisible: user ? true : false,
     },
     {

@@ -9,6 +9,19 @@ const AuthProvider = ({ children }) => {
   const [showSideBar, setShowSideBar] = useState(true);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  // sidebar should be hidden by default for mobile devices
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.innerWidth < 768;
+      setShowSideBar(!isMobile);
+    };
+  
+    handleResize(); // check immediately
+    window.addEventListener("resize", handleResize); // respond to future resizes
+  
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const login = async (userName, password) => {
     setLoading(true);

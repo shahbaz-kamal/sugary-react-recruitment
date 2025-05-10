@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import ProductCard from "./ProductCard";
 
 const AllProducts = () => {
   const axiosSecure = UseAxiosSecure();
@@ -16,13 +17,15 @@ const AllProducts = () => {
         Types: [1],
       };
       const filterParam = btoa(JSON.stringify(filterObj));
-      const res = await axiosSecure.get(`/Materials/GetAll/?filter=${filterParam}`);
+      const res = await axiosSecure.get(
+        `/Materials/GetAll/?filter=${filterParam}`
+      );
       return res.data;
     },
     keepPreviousData: true,
     staleTime: 1000 * 60 * 1,
   });
-console.log(data)
+  console.log(data);
   const total = data?.TotalCount || 0;
   const totalPages = Math.ceil(total / limit);
 
@@ -34,10 +37,7 @@ console.log(data)
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data?.Materials?.map((product) => (
-          <div key={product.Id} className="p-4 border rounded shadow">
-            <h3 className="text-lg font-semibold">{product?.Name || "Unnamed Product"}</h3>
-            <p className="text-sm text-gray-600">ID: {product?.Id}</p>
-          </div>
+          <ProductCard key={product.Id} product={product}></ProductCard>
         ))}
       </div>
 
@@ -64,7 +64,9 @@ console.log(data)
         </button>
       </div>
 
-      {isFetching && <p className="text-center mt-2">Loading more products...</p>}
+      {isFetching && (
+        <p className="text-center mt-2">Loading more products...</p>
+      )}
     </div>
   );
 };

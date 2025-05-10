@@ -9,8 +9,44 @@ const AuthProvider = ({ children }) => {
   const [showSideBar, setShowSideBar] = useState(true);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // sidebar should be hidden by default for mobile devices
+  const [cartItems, setCartItems] = useState([]);
 
+  useEffect(() => {
+    const storedCart =
+      JSON.parse(localStorage.getItem("cart-from-sugary")) || [];
+    setCartItems(storedCart);
+  }, []);
+
+  const updateLocalStorageAndState = (cart) => {
+    localStorage.setItem("cart-from-sugary", JSON.stringify(cart));
+    setCartItems(cart);
+  };
+
+  const addToCart = (product, quantity = 1) => {
+    const existingCart =
+      JSON.parse(localStorage.getItem("cart-from-sugary")) || [];
+
+    const index = existingCart.findIndex((item) => item.Id === product.Id);
+
+    if (index !== -1) {
+      // Product exists — update quantity and totalPrice
+      existingCart[index].quantity += quantity;
+      existingCart[index].totalPrice =
+        existingCart[index].SalesPrice * existingCart[index].quantity;
+    } else {
+      // Add new product
+      existingCart.push({
+        ...product,
+        quantity,
+        totalPrice: product.SalesPrice * quantity,
+      });
+    }
+
+    updateLocalStorageAndState(existingCart);
+  };
+  console.log(cartItems);
+
+  // sidebar should be hidden by default for mobile devices
   useEffect(() => {
     const handleResize = () => {
       const isMobile = window.innerWidth < 768;
@@ -96,6 +132,9 @@ const AuthProvider = ({ children }) => {
     logout,
     showSideBar,
     setShowSideBar,
+    addToCart,
+    cartItems,
+    setCartItems,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

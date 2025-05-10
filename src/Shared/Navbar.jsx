@@ -6,10 +6,12 @@ import "./Navbar";
 import useAuth from "../Hooks/useAuth";
 import Swal from "sweetalert2";
 import navMenu from "../Utilities/navMenu";
+import { MdShoppingCartCheckout } from "react-icons/md";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
   console.log(user);
+  const { cartItems } = useAuth();
 
   const navItems = navMenu();
   console.log(navItems);
@@ -88,7 +90,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-12 h-12">
+          <div className="w-12 h-12 hidden md:block">
             <img src={logo} className="rounded-full" alt="" />
           </div>
           <div className="font-extrabold text-xl md:text-3xl hidden md:block">
@@ -102,6 +104,15 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 ">{links}</ul>
       </div>
       <div className="navbar-end flex gap-4">
+      {cartItems ? (
+          <div className="text-white relative">
+            {" "}
+            <MdShoppingCartCheckout size={25} />
+            <span className="absolute -top-4  -right-1 font-bold">{cartItems.length}</span>
+          </div>
+        ) : (
+          ""
+        )}
         {user ? (
           <button
             onClick={handleLogout}
@@ -124,6 +135,8 @@ const Navbar = () => {
             onError={(e) => (e.target.style.display = "none")}
           />
         )}
+
+       
       </div>
     </div>
   );

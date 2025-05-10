@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       login(userName, password);
-      navigate("/dashboard/overview");
+      navigate("/dashboard/all-products");
     } catch (error) {
       console.log(error.message);
     }

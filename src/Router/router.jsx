@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Overview from "../Pages/Overview";
 import AllProducts from "../Pages/AllProducts";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,28 @@ const router = createBrowserRouter([
   // dashboard layout
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     children: [
-      { path: "overview", element: <Overview></Overview> },
-      { path: "all-products", element: <AllProducts></AllProducts> },
+      {
+        path: "overview",
+        element: (
+          <PrivateRoute>
+            <Overview></Overview>{" "}
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-products",
+        element: (
+          <PrivateRoute>
+            <AllProducts></AllProducts>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

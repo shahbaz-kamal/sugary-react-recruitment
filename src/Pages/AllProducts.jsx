@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import ProductCard from "../Components/ProductCard";
 import Loading from "../Components/Loading";
+import Headline from "../Shared/Headline";
 
 const AllProducts = () => {
   const axiosSecure = UseAxiosSecure();
@@ -34,7 +35,10 @@ const AllProducts = () => {
 
   return (
     <div className="px-10 py-6">
-      <h2 className="text-2xl font-bold mb-4">All Products</h2>
+         <Headline
+        title="All Products"
+        description="Fashion, tech, and more of your favorites in one place."
+      ></Headline>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {data?.Materials?.map((product) => (

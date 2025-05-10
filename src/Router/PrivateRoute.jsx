@@ -1,11 +1,12 @@
 import React from "react";
 import useAuth from "../Hooks/useAuth";
 import { Navigate } from "react-router-dom";
+import Loading from "../Components/Loading";
 
-const PrivateRoute = () => {
+const PrivateRoute = ({children}) => {
   const { user, loading } = useAuth();
   if (loading) {
-    return <span className="loading loading-spinner loading-lg"></span>;
+    return <Loading></Loading>;
   }
 
   if (user) {

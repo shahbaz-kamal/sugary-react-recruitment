@@ -7,7 +7,7 @@ import Loading from "../Components/Loading";
 const Overview = () => {
   const axiosSecure = UseAxiosSecure();
   const { user } = useAuth();
-  console.log(user);
+//   console.log(user);
 
   const { data, isLoading } = useQuery({
     queryKey: ["productStats"],
@@ -31,9 +31,9 @@ const Overview = () => {
   return (
     <div className="px-4 md:px-10">
       <Headline
-        title="AquaTech Overview"
-        description="Manage fish and gadgets inventory"
-      />
+        title="Explore ShopVerse"
+        description="Essentials, gadgets, and style—everything you need."
+      ></Headline>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="p-6 bg-white rounded-lg shadow-md border-t-4 border-success">

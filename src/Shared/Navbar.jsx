@@ -9,14 +9,15 @@ import navMenu from "../Utilities/navMenu";
 
 const Navbar = () => {
   const { logout, user } = useAuth();
- 
- const navItems=navMenu()
- console.log(navItems)
+  console.log(user);
+
+  const navItems = navMenu();
+  console.log(navItems);
   const navigate = useNavigate();
   if (user) {
     console.log(user);
   }
- 
+
   const links = (
     <>
       {navItems.map((link) => {
@@ -100,7 +101,7 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 ">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-4">
         {user ? (
           <button
             onClick={handleLogout}
@@ -114,6 +115,14 @@ const Navbar = () => {
               Login
             </button>
           </Link>
+        )}
+        {user?.profilePhoto && (
+          <img
+            src={user.profilePhoto}
+            alt="Profile"
+            className="w-14 h-14 rounded-full object-cover"
+            onError={(e) => (e.target.style.display = "none")}
+          />
         )}
       </div>
     </div>
